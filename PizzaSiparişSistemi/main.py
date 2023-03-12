@@ -1,7 +1,7 @@
 import csv
 import datetime
 
-
+#Pizza class'ı tanımlayıp daha sonra oluşturacağımız pizzalarımız için özellik tanımlayacağız
 class Pizza:
     def __init__(self):
         self._description = "Pizza"
@@ -41,7 +41,7 @@ class SadePizza(Pizza):
         self._description = "Sade Pizza"
         self._cost = 8.0
 
-
+#Daha sonra yazacağımız ek malzemeler için decorator oluşturuyoruz.
 class Decorator(Pizza):
     def __init__(self, component):
         super().__init__()
@@ -95,16 +95,16 @@ class Misir(Decorator):
         self._description = "Mısır"
         self._cost = 1.5
 
-
+#Müşteri isteği doğrultusunda main fonksiyonu oluşturuyoruz.
 def main():
-    # Open the file for reading
+    # menu.txt dosyasını okumak ve ekrana türkçe basmak için aşağıdaki kodu yazıyoruz.
     with open('menu.txt', 'r', encoding='utf=8') as file:
-        # Read the contents of the file into a variable
+        # Okunan txt içeriğini değişken türüne çeviriyoruz.
         file_contents = file.read()
-        # Print the contents of the file
+        # menu içeriğini basıyoruz.
     print(file_contents)
 
-    # get pizza choice from user
+    # Pizza seçimini kullıcıdan alıyoruz.
     pizza_choice = int(input("Pizza seçiminiz: "))
     while pizza_choice not in [1, 2, 3, 4]:
         pizza_choice = int(input("lütfen geçerli bir sayı girin: "))
@@ -118,7 +118,7 @@ def main():
     elif pizza_choice == 4:
         pizza = SadePizza()
 
-    # get sauce choice from user
+    # ek malzeme seçimini kullanıcıdan alıyoruz.
     sauce_choice = int(input("Ek malzeme seçin: "))
     while sauce_choice not in [11, 12, 13, 14, 15, 16]:
         sauce_choice = int(input("lütfen geçerli bir sayı girin: "))
@@ -136,11 +136,11 @@ def main():
     elif sauce_choice == 16:
         sauce = Misir(pizza)
 
-    # calculate total cost
+    # Toplam fiş tutarını hesaplıyoruz.
     cost = sauce.get_cost()
     print("Total cost: ", cost)
 
-    # get customer information and write to CSV file
+    # Müşteriden bilgilerini alıyoruz
     isim = input("İsminiz: ")
     tc_no = input("T.C kimlik numaranızı girin: ")
     kredi_kart_no = input("Kredi kartı Numaranızı Tuşlayın: ")
@@ -149,7 +149,7 @@ def main():
     order_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     order_description = sauce.get_description()
 
-    # create table in CSV file if it doesn't exist
+    # CSV dosyası yoksa otomatik oluşturacak kodu yazıyoruz.
     with open("Orders_Database.csv", "a", encoding='utf-8', newline="") as f:
         fieldnames = ['isim', 'T.C no', 'Adres', 'Kredi Kart Numarasi', 'Siparis Detay', 'Fiyat', 'Siparis Zamani',
                       'Kredi Karti Sifre']
@@ -157,7 +157,7 @@ def main():
         if f.tell() == 0:
             writer.writeheader()
 
-        # write order information to CSV file
+        # Csv dosyasına aldığımız bilgileri yazıyoruz.
         writer.writerow({'isim': isim, 'T.C no': tc_no, 'Kredi Kart Numarasi': kredi_kart_no, 'Adres': adres,
                          'Siparis Detay': order_description, 'Fiyat': cost, 'Siparis Zamani': order_time,
                          'Kredi Karti Sifre': kredi_kart_sifre})
