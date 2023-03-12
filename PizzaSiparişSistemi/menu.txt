@@ -1,25 +1,17 @@
 * Lütfen Bir Pizza Seçiniz:
 
 1: Klasik Pizza 
-
 2: Margarita Pizza
-
 3: Türk Pizza
-
 4: Sade Pizza
 
 * ve seçeceğiniz ekstra malzeme:
 
 11: Zeytin
-
 12: Mantar
-
 13: Keçi Peyniri
-
 14: Et
-
 15: Soğan
-
 16: Mısır
 
 * Teşekkür ederiz!
