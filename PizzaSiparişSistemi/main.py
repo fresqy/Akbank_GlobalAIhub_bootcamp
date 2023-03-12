@@ -17,21 +17,21 @@ class Pizza:
 class ClassicPizza(Pizza):
     def __init__(self):
         super().__init__()
-        self._description = "Klasik Pizza"
+        self._description = "Klasik Pizza: Domates, mozzarella ve feslegen"
         self._cost = 10.0
 
 
 class MargheritaPizza(Pizza):
     def __init__(self):
         super().__init__()
-        self._description = "Margherita Pizza"
+        self._description = "Margherita Pizza: Domates, mozarella, feslegen, zeytinyagı ve tuz"
         self._cost = 12.0
 
 
 class TurkPizza(Pizza):
     def __init__(self):
         super().__init__()
-        self._description = "Türk Pizza"
+        self._description = "Türk Pizza: Domates, kiyma, sogan ve sarimsak"
         self._cost = 15.0
 
 
